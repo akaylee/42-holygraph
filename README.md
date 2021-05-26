@@ -1,7 +1,7 @@
 # holygraph42
 This ultimate repository contains a graph with attached links to all subjects that were available in the Intra by the time of May 26, 2021.
 
-In case of errors/insertion in the graph itself or changes in subjects, please contact me @ wondermoxie@gmail.com (I'm not a 42student anymore).
+In case of errors/insertions in the graph itself or changes in subjects, please contact me @ wondermoxie@gmail.com (I'm not a 42student anymore).
 
 <object data-file="https://raw.githubusercontent.com/akaylee/holygraph42/284a712cd29237b38f8ae527a20684e14278bf9a/Large%20files%20%26%20utilities/Holygraph.pdf" type="application/pdf" width="1500" height="2000">
     <embed src="https://raw.githubusercontent.com/akaylee/holygraph42/284a712cd29237b38f8ae527a20684e14278bf9a/Large%20files%20%26%20utilities/Holygraph.pdf">
