@@ -1,0 +1,210 @@
+> -----Message d'origine-----
+> De : *************************
+> Envoyé : vendredi 14 mai 19:36
+> À : sebastien benoit
+> Objet : LEMIPC question
+> 
+> Salut,
+> voila j'ai quelques petites questions sur le sujet de LEMIPC :
+> 
+> - Quelles sont les regles de deplacement des joueurs ?
+
+deplacement d'une case a la fois (une case par lock de la map), 
+dans les directions haut, bas, droite, gauche (pas de diagonale)
+
+> - Quelle taille fait le plateau ?
+
+la taille que vous souhaitez, mettez-le dans des defines
+
+> - Quel est le nombre de joueurs ?
+
+pas de limite particuliere, idem pour le nombre d'equipe. on devrait 
+tester avec quelques joueurs (3 ou 4).
+
+--
+Sebastien BENOIT
+
+
+> -----Original Message-----
+> From: @@@@@@@@@@@@@@@@@@@@
+> Sent: vendredi 21 mai 11:57
+> To: Beeone
+> Subject: LEMIPC : Besoin de precisions...
+> 
+> Hello,
+> 
+> Le sujet nous laisse-t-il vraiment autant de liberte qu'il 
+> n'y parait ? J'ai donc quelques questions ;)
+> 
+> 1. Quand un joueur est entoure, comment sait-il qu'il doit 
+> mourir ? Est-ce le dernier joueur qui a permis de l'entourer 
+> verifie si l'autre est entoure et dans ce cas lui envoie un 
+> message comme quoi il est mort ? J'ai vu que :
+> 
+>   "Lorsqu'un joueur se rend compte qu'il est entoure d'au moins 2 
+>   joueurs d'une meme equipe adverse, il doit quitter le plateau"
+
+le joueur qui est entoure doit faire la verification avant d'essayer de bouger.
+ 
+> ...mais dans ce cas, a quoi peuvent bien servir les msgq? 
+> J'en vois pas l'utilite ici dans le programme.
+
+a communiquer aux autres la position d'un joueur a attaquer
+
+> 2. Les deplacements sont-ils aleatoires ou intelligents ?
+
+intelligents (il faut evidemment poursuivre les joueurs des autres equipes, 
+tout en essayant de se mettre d'accord sur une proie)
+
+> 3. Peut-on faire un thread supplementaire dedie a l'affichage 
+> afin d'obtenir un code plus propre ?
+
+(pas de threads, mais des processus)
+
+Oui vous pouvez faire un client specifique pour l'affichage, neammoins, 
+ce n'est pas ce client qui doit creer la map. Il ne doit rien modifier 
+dans le jeu.
+
+> 3. Question potentiellement bete : combien de joueurs peuvent 
+> jouer en meme temps ? Autrement dit, la value de la semaphore 
+> d'acces a la ressource doit etre de combien initialement ? 1 ou.. ?
+
+1 seul joueur peut jouer en meme temps, sinon on risque d'avoir des 
+recouvrements sur la map.
+
+--
+Sebastien BENOIT
+
+
+ 
+
+> -----Original Message-----
+> From: %%%%%%%%%%%%%%%%%%%%%%%
+> Sent: lundi 24 mai 15:43
+> To: Seb, c'est bien
+> Subject: LEMIPC : encore deux questions !
+> 
+> Salut,
+> 
+> J'ai encore deux questions a propos du LEMIPC.
+> 
+> 1. J'ai opte pour l'utilisation d'un processus dedie a la 
+> couche graphique. 
+> Ce processus peut acceder aux structures de tous les joueurs. 
+> Mais doit-on passer par le semaphore d'acces aux donnees des 
+> joueurs pour ensuite acceder aux informations partagees ? Ou 
+> ai-je le droit d'utiliser directement les informations de mes 
+> structures ? (ceci evidemment que pour la couche graphique, 
+> je sais bien que les joueurs ne peuvent pas)
+
+si ce ne sont que des donnees en lecture seule, pas besoin de 
+semaphore. Par contre des qu'il s'agit d'une donnee qu'au moins 
+2 processus peuvent acceder en meme temps et dont au moins 
+l'un d'entre eux puisse la modifier, tous les acces (lecture 
+comprise) doivent se faire via une semaphore.
+
+> 2. Pour la pseudo intelligence artificielle quel est le but 
+> en fait ?
+
+c'est de l'ordre du bonus, l'IA n'utilise pas les IPC, par 
+contre le fait de synchroniser les joueurs d'une equipe pour 
+qu'ils attaquent le meme joueur si.
+
+> Pour l'instant les joueurs vont se foncer tous 
+> dessus, et chaque equipe essaye d'en encadrer un de l'autre 
+> equipe. Mais graphiquement, c'est fouilli et etrange... 
+> est-ce la solution pour autant ?
+
+oui. mais ca peut se peaufiner, il n'y a pas besoin d'etre plus 
+de 2, mais il faut que ca soit les 2 les plus proches pour 
+augmenter ses possibilites de reussite.
+
+vous pouvez aussi imaginer passer en parametre le "niveau" de 
+l'IA a utiliser, afin de faire combattre des equipes 
+d'intelligences inegales.
+
+--
+Sebastien BENOIT
+
+> -----Original Message-----
+> From: +++++++++++++++++++++++
+> Sent: mardi 25 mai 15:15
+> To: sebastien benoit
+> Subject: LEMIPC : Questions
+> 
+> 
+> Bonjour,
+> 
+> Je me demandais comment devait-on faire le lemipc,
+> 
+> Y a-t-il un seul executable qui fork autant de fois necessaire
+> a la creation de mes equipes et de mes joueurs ?
+>
+> exemple : 2 equipes de 3 joueurs, mon programme va forker de maniere a
+> obtenir les 6 joueurs qui vont s'affronter puis lancer le jeu.
+
+non
+ 
+> Ou
+> 
+> Il y a un seul executable et on lancera autants d'executables 
+> qu'il y a d'equipes qui vont jouer ensemble et le programme forkera 
+> juste le nombre de fois necessaire pour creer les 3 joueurs de chaque equipe.
+
+non plus
+
+on lance un executable pour chaque joueur, en precisant en parametre son equipe.
+
+il n'y a jamais besoin d'utiliser fork.
+
+--
+Sebastien BENOIT
+
+-----------------------------:
+> Bonjour,
+>
+> J'ai quelques questions concernant le déroulement de la partie.
+>
+> Est-ce que le jeu commence dès que le 1er joueur créé l'environnement du jeu
+> (initialisation des IPCs, création du plateau de jeu, ...) ou celui qui créé
+> la partie définit le nombre de joueurs et d'équipes qui vont prendre part au
+> jeu et démarre lorsque tout le monde est arrivé ?
+
+ca n'a pas d'importance
+
+> Suivant la 1ère hypothèse, cela signifie qu'un joueur peut venir s'immicer
+> dans la partie quand il veut, même au beau milieu de la partie?
+
+oui, mais le but est de se concentrer sur les IPC, on lancera
+simplement le jeu dans de bonnes conditions.
+
+> Dans ce cas là, comment gérer la fin de partie ? En effet, un joueur ne meurt
+> que lorsque 2 joueurs d'une équipe adverse l'entoure. Si l'équipe 1
+> extermine l'équipe 2, il restera au moins 2 joueurs sur le plateau. Comment
+> arrêter le jeu?
+
+la partie s'arrete quand l'equipe adverse est completement eliminee.
+
+Sujet: "Pour qu'une equipe gagne le jeu, il faudra qu'elle soit la
+seule restante sur le plateau."
+
+> Les joueurs jouent-ils chacun leur tour (notion de cycle), ou les joueurs
+> peuvent jouer à n'importe quel moment (du moment que la map ne soit pas
+> lockée !)?
+
+ça ce sont les threads et leurs mysteres qui gerent ;)
+
+> Concrètement, un joueur A peut jouer 2 fois alors que le joueur B n'a pas
+> encore joué ?
+
+oui ça peut clairement arriver.
+
+> Peut-on définir un nombre maximum de joueurs via un #define et utiliser un
+> tableau ou doit-on gérer les joueurs via une structure telle qu'une liste
+> chaînée?
+
+ni l'un ni l'autre, le nombre de joueurs n'est pas limite, on peut
+juste consulter la map pour voir quelle equipe occupe quelle case
+
+--
+Sebastien BENOIT
