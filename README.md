@@ -2,7 +2,7 @@
 
  (yes I got a bit carried away with all this free time)
 -------------------------------------------------------
-This ultimate repository contains a graph with attached links to all subjects that were available in the Intra by the time of May 26, 2021.
+This ultimate repository contains a graph with attached links to all subjects that were available in the Intra as of May 26, 2021.
 
 Piscine repositories ***do not*** belong to me, so shout out to everybody who stored it when it was available 🗿
 
