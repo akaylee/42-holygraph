@@ -6,6 +6,8 @@ This ultimate repository contains a graph with attached links to all subjects th
 
 Piscine repositories ***does not*** belong to me, so shout out to everybody who stored it when it was available 🗿
 
+**Same applies to exam repos** 🎓
+
 In case of errors/insertions in the graph itself or changes in subjects, please contact me @ wondermoxie@gmail.com (I'm not a 42student anymore).
 
 <object data-file="https://drive.google.com/file/d/17Y7OfDbDkEBdIwHcxu-3vZopAY9LvP8K/view?usp=sharing" type="application/pdf" width="1500" height="2000">
