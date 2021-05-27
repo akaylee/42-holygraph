@@ -4,7 +4,7 @@
 -------------------------------------------------------
 This ultimate repository contains a graph with attached links to all subjects that were available in the Intra by the time of May 26, 2021.
 
-Piscine repositories ***does not*** belong to me, so shout out to everybody who stored it when it was available 🗿
+Piscine repositories ***do not*** belong to me, so shout out to everybody who stored it when it was available 🗿
 
 **Same applies to exam repos** 🎓
 
