@@ -16,4 +16,4 @@ In case of errors/insertions in the graph itself or changes in subjects, please 
     </embed>
 </object>
 
-![Preview](https://user-images.githubusercontent.com/70947106/119819709-5826bd00-bef9-11eb-85a5-861a1daf3bdb.png)
+![Preview](https://user-images.githubusercontent.com/70947106/119823953-0e8ca100-befe-11eb-9db7-51f353a83b9f.png)
