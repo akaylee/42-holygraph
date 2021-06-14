@@ -12,7 +12,7 @@ In case of errors/insertions in the graph itself or changes in subjects, please 
 
 <object data-file="https://drive.google.com/file/d/1hAfM56LkN2UYlraN56vDx9dsMf-dB49L/view?usp=sharing" type="application/pdf" width="1500" height="2000">
     <embed src="">
-    <p>Interactive graph (with clickable links) is avalaible here: <a href="https://drive.google.com/file/d/17Y7OfDbDkEBdIwHcxu-3vZopAY9LvP8K/view?usp=sharing">View PDF</a>.</p>
+    <p>Interactive graph (with clickable links) is avalaible here: <a href="https://drive.google.com/file/d/1hAfM56LkN2UYlraN56vDx9dsMf-dB49L/view?usp=sharing">View PDF</a>.</p>
     </embed>
 </object>
 
